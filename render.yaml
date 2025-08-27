@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: springboot-java21-app
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
