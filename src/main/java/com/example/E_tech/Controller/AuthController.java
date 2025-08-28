@@ -22,8 +22,8 @@ public class AuthController {
         String email = body.get("email");
         String password = body.get("password");
         String role = body.get("role");
-
-        User savedUser = userService.createUser(email, password, role);
+        String name=body.get("name");
+        User savedUser = userService.createUser(email, password, role,name);
         return ResponseEntity.ok(Map.of(
                 "message", "User registered successfully",
                 "userId", savedUser.getId()
@@ -66,7 +66,8 @@ public class AuthController {
                 return ResponseEntity.ok(Map.of(
                         "message", "Login successful",
                         "userId", user.getId(),
-                        "role",user.getRole()
+                        "role",user.getRole(),
+                        "name", user.getName()
                 ));
             }
         }

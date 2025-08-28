@@ -24,12 +24,13 @@ public class UserService {
         this.emailService = emailService;
     }
 
-    public User createUser(String email, String password, String role) {
+    public User createUser(String email, String password, String role,String name) {
         if (userRepository.findByEmail(email).isPresent()) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already registered");
         }
         User user = new User();
         user.setEmail(email);
+        user.setName(name);
         user.setPassword(PasswordUtil.hashPassword(password));
         user.setRole(role);
         user.setCreatedAt(LocalDateTime.now());
