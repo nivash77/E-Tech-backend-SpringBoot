@@ -8,6 +8,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
@@ -27,8 +28,8 @@ public class CertificateService {
             PdfWriter.getInstance(document, out);
             document.open();
 
-            // Add template/background image
-            Image background = Image.getInstance("src/main/resources/templates/tp244-bg2-04.jpg");
+            ClassPathResource imgFile = new ClassPathResource("templates/tp244-bg2-04.jpg");
+            Image background = Image.getInstance(imgFile.getInputStream().readAllBytes());
             background.setAbsolutePosition(0, 0);
             background.scaleAbsolute(PageSize.A4.getWidth(), PageSize.A4.getHeight());
             document.add(background);
