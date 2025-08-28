@@ -27,7 +27,6 @@ public class CertificateService {
             Document document = new Document(PageSize.A4);
             PdfWriter.getInstance(document, out);
             document.open();
-
             ClassPathResource imgFile = new ClassPathResource("templates/tp244-bg2-04.jpg");
             Image background = Image.getInstance(imgFile.getInputStream().readAllBytes());
             background.setAbsolutePosition(0, 0);
